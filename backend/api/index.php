@@ -1,5 +1,9 @@
 <?php
 
+// Fix Vercel serverless SCRIPT_NAME routing so Laravel matches /api/* routes correctly
+$_SERVER['SCRIPT_NAME'] = '/index.php';
+$_SERVER['SCRIPT_FILENAME'] = __DIR__ . '/../public/index.php';
+
 $allowedOrigins = [
     'https://saloonerp.vercel.app',
     'http://localhost:5173',
