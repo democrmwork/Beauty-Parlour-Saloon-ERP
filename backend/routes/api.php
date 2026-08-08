@@ -116,6 +116,14 @@ $registerViewCrud = fn (string $name, string $controller, array $options = []) =
     $options
 );
 
+// Top-level auth routes for compatibility (no CSRF protection)
+Route::post('auth/login', [AuthController::class, 'login']);
+Route::middleware('auth:sanctum')->group(function (): void {
+    Route::post('auth/logout', [AuthController::class, 'logout']);
+    Route::get('auth/me', [AuthController::class, 'me']);
+    Route::patch('auth/theme', [AuthController::class, 'updateTheme']);
+});
+
 Route::prefix('v1')->group(function () use ($applyResourcePermissions, $registerViewManage, $registerViewCrud): void {
     Route::prefix('public')->group(function (): void {
         Route::get('settings', [PublicWebsiteController::class, 'settings']);
