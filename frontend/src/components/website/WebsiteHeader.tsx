@@ -5,6 +5,7 @@ import { cn } from '@/utils/cn'
 import { NAV_LINKS } from '@/constants/websiteContent'
 import { getPublicSiteName } from '@/utils/website'
 import { usePublicWebsite } from '@/contexts/PublicWebsiteContext'
+import { ThemeToggle } from '@/components/ui/ThemeToggle'
 
 export function WebsiteHeader() {
   const { settings } = usePublicWebsite()
@@ -95,8 +96,8 @@ export function WebsiteHeader() {
             </NavLink>
           ))}
         </nav>
-
         <div className="hidden items-center gap-3 lg:flex">
+          <ThemeToggle variant="icon" />
           <Link
             to="/contact"
             className="rounded-full bg-accent px-5 py-2.5 text-sm font-semibold text-accent-foreground shadow-md transition hover:bg-accent/90"

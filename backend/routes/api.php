@@ -143,6 +143,7 @@ Route::prefix('v1')->group(function () use ($applyResourcePermissions, $register
         Route::middleware('auth:sanctum')->group(function (): void {
             Route::post('logout', [AuthController::class, 'logout']);
             Route::get('me', [AuthController::class, 'me']);
+            Route::patch('theme', [AuthController::class, 'updateTheme']);
         });
     });
 

@@ -49,4 +49,19 @@ class AuthController extends Controller
             'User profile retrieved'
         );
     }
+
+    public function updateTheme(Request $request): JsonResponse
+    {
+        $data = $request->validate([
+            'theme' => ['required', 'string', 'in:light,dark'],
+        ]);
+
+        $user = $request->user();
+        $user->update(['theme' => $data['theme']]);
+
+        return $this->successResponse(
+            new \App\Http\Resources\UserResource($user->load('roles', 'permissions')),
+            'User theme preference updated successfully'
+        );
+    }
 }

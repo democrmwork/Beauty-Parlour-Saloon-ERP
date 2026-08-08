@@ -19,6 +19,11 @@ export const authService = {
     const { data } = await api.get<ApiResponse<User>>('/auth/me')
     return data
   },
+
+  updateTheme: async (theme: 'light' | 'dark') => {
+    const { data } = await api.patch<ApiResponse<User>>('/auth/theme', { theme })
+    return data
+  },
 }
 
 export const dashboardService = {

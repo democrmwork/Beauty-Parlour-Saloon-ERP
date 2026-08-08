@@ -5,6 +5,8 @@ import { useAuth } from '@/contexts/AuthContext'
 import { ROLE_LABELS, type Role } from '@/constants/roles'
 import { useNavigate } from 'react-router-dom'
 
+import { ThemeToggle } from '@/components/ui/ThemeToggle'
+
 interface NavbarProps {
   onMenuClick?: () => void
   title?: string
@@ -36,6 +38,7 @@ export function Navbar({ onMenuClick, title = 'Dashboard' }: NavbarProps) {
       </div>
 
       <div className="flex items-center gap-2 sm:gap-3">
+        <ThemeToggle variant="icon" />
         <NotificationBell />
 
         <DropdownMenu.Root>

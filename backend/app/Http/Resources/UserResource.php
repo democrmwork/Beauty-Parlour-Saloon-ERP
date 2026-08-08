@@ -36,6 +36,7 @@ class UserResource extends JsonResource
             'emergency_contact_phone' => $this->emergency_contact_phone,
             'staff_notes' => $this->staff_notes,
             'avatar' => $this->resolveAvatarUrl($this->avatar),
+            'theme' => $this->theme ?? 'light',
             'is_active' => $this->is_active,
             'last_login_at' => $this->last_login_at?->toIso8601String(),
             'roles' => $this->whenLoaded('roles', fn () => $this->roles->pluck('name')),

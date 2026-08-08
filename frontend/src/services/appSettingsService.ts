@@ -13,6 +13,7 @@ export interface AppSettings {
   vat_enabled?: boolean
   primary_color: string
   secondary_color: string
+  enable_theme_mode?: boolean
 }
 
 export const DEFAULT_APP_SETTINGS: AppSettings = {
@@ -26,6 +27,7 @@ export const DEFAULT_APP_SETTINGS: AppSettings = {
   vat_enabled: false,
   primary_color: '#7A2E3E',
   secondary_color: '#C9A46C',
+  enable_theme_mode: true,
 }
 
 export const appSettingsService = {

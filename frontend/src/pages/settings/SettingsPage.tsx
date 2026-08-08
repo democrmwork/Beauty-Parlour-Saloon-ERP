@@ -73,8 +73,8 @@ const SETTING_GROUPS: { id: string; label: string; description?: string; keys: s
   {
     id: 'appearance',
     label: 'Appearance',
-    description: 'Brand colors applied to the interface.',
-    keys: ['primary_color', 'secondary_color'],
+    description: 'Brand colors and options applied to the interface.',
+    keys: ['primary_color', 'secondary_color', 'enable_theme_mode'],
   },
   {
     id: 'website',
@@ -93,6 +93,7 @@ const FIELD_LABELS: Record<string, string> = {
   vat_enabled: 'Enable VAT flag (legacy)',
   primary_color: 'Primary Color',
   secondary_color: 'Secondary Color',
+  enable_theme_mode: 'Enable Day/Night Mode Switcher',
   business_hours: 'Business Hours',
   public_website_name: 'Public Website Name',
   public_phone: 'Public Phone',

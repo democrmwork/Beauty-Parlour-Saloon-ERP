@@ -39,6 +39,7 @@ class User extends Authenticatable
         'emergency_contact_phone',
         'staff_notes',
         'avatar',
+        'theme',
         'password',
         'is_active',
         'last_login_at',

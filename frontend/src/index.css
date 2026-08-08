@@ -25,6 +25,51 @@
   --font-sans: 'Outfit', system-ui, -apple-system, sans-serif;
 }
 
+.dark,
+[data-theme='dark'] {
+  --color-background: #140c0e;
+  --color-foreground: #f7f1ee;
+  --color-card: #1f1417;
+  --color-border: #382428;
+  --color-muted: #2a1a1d;
+  --color-muted-foreground: #b39f9b;
+  --color-primary: #9b3d52;
+  --color-primary-foreground: #ffffff;
+  --color-secondary: #c97d88;
+  --color-secondary-foreground: #ffffff;
+  --color-accent: #d6b27a;
+  --color-accent-foreground: #140c0e;
+  --color-destructive: #e74c3c;
+  --color-success: #4ea880;
+  --color-warning: #d6b27a;
+}
+
+.dark .bg-white,
+[data-theme='dark'] .bg-white {
+  background-color: #1f1417 !important;
+}
+
+.dark .bg-slate-50,
+[data-theme='dark'] .bg-slate-50 {
+  background-color: #180f11 !important;
+}
+
+.dark .text-slate-900,
+.dark .text-slate-800,
+.dark .text-slate-700,
+[data-theme='dark'] .text-slate-900,
+[data-theme='dark'] .text-slate-800,
+[data-theme='dark'] .text-slate-700 {
+  color: #f7f1ee !important;
+}
+
+.dark .border-slate-200,
+.dark .border-slate-100,
+[data-theme='dark'] .border-slate-200,
+[data-theme='dark'] .border-slate-100 {
+  border-color: #382428 !important;
+}
+
 * {
   border-color: var(--color-border);
 }

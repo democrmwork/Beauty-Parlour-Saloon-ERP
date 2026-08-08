@@ -658,16 +658,59 @@ export default function AppointmentsPage() {
                           className="relative border-l border-border"
                           style={{ height: (HOUR_END - HOUR_START) * HOUR_HEIGHT }}
                         >
-                          {Array.from({ length: HOUR_END - HOUR_START }, (_, i) => (
-                            <div key={i} className="border-b border-border/60" style={{ height: HOUR_HEIGHT }} />
-                          ))}
+                          {Array.from({ length: HOUR_END - HOUR_START }, (_, i) => {
+                            const hour = HOUR_START + i
+                            const formattedTime = `${String(hour).padStart(2, '0')}:00`
+                            const formattedDateStr = day.toLocaleDateString('en-AE', {
+                              weekday: 'short',
+                              month: 'short',
+                              day: 'numeric',
+                            })
+                            return (
+                              <div
+                                key={i}
+                                onClick={(e) => {
+                                  if ((e.target as HTMLElement).closest('button')) return
+                                  const rect = e.currentTarget.getBoundingClientRect()
+                                  const clickY = e.clientY - rect.top
+                                  const minuteOffset = Math.floor((clickY / HOUR_HEIGHT) * 60)
+                                  const roundedMinutes = Math.floor(minuteOffset / 15) * 15
+                                  const slotDate = new Date(day)
+                                  slotDate.setHours(hour, roundedMinutes, 0, 0)
+
+                                  if (canCreate) {
+                                    setBookScheduledAt(toDatetimeLocalValue(slotDate))
+                                    setFormError(null)
+                                    setBookOpen(true)
+                                  }
+                                }}
+                                className={cn(
+                                  'group relative border-b border-border/60 transition-colors',
+                                  canCreate && 'cursor-pointer hover:bg-primary/10 hover:border-primary/30'
+                                )}
+                                style={{ height: HOUR_HEIGHT }}
+                                title={
+                                  canCreate
+                                    ? `Click to book slot for ${formattedDateStr} at ${formattedTime}`
+                                    : undefined
+                                }
+                              >
+                                {canCreate && (
+                                  <div className="pointer-events-none z-0 flex items-center justify-between rounded bg-primary/15 px-1.5 py-0.5 text-[11px] font-medium text-primary opacity-0 transition-opacity group-hover:opacity-100">
+                                    <span>+ Book {formattedTime}</span>
+                                    <span className="text-[10px] opacity-75">{formattedDateStr}</span>
+                                  </div>
+                                )}
+                              </div>
+                            )
+                          })}
                           {dayAppts.map((appt) => (
                             <button
                               key={appt.id}
                               type="button"
                               onClick={() => openDetail(appt)}
                               className={cn(
-                                'absolute left-0.5 right-0.5 overflow-hidden rounded-md border px-1.5 py-0.5 text-left text-xs shadow-sm transition hover:brightness-95',
+                                'absolute left-0.5 right-0.5 z-10 overflow-hidden rounded-md border px-1.5 py-0.5 text-left text-xs shadow-sm transition hover:brightness-95',
                                 appt.status === 'cancelled' || appt.status === 'no_show'
                                   ? 'border-muted bg-muted/60 opacity-60 line-through'
                                   : appt.type === 'walk_in'

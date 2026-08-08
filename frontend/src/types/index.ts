@@ -20,6 +20,7 @@ export interface User {
   email: string
   phone?: string
   avatar?: string
+  theme?: 'light' | 'dark'
   is_active: boolean
   last_login_at?: string
   roles?: string[]
