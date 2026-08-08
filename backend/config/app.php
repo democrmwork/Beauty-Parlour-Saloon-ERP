@@ -92,10 +92,10 @@ return [
     | This key is utilized by Laravel's encryption services and should be set
     | to a random, 32 character string to ensure that all encrypted values
     | are secure. You should do this prior to deploying the application.
-    |'cipher' => 'AES-256-CBC',
+    |
     */
 
-    
+    'cipher' => 'AES-256-CBC',
 
     'key' => env('APP_KEY'),
 
