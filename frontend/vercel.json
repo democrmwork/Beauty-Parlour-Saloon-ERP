@@ -5,6 +5,10 @@
       "destination": "https://saloonerp-api.vercel.app/api/:path*"
     },
     {
+      "source": "/auth/:path*",
+      "destination": "https://saloonerp-api.vercel.app/auth/:path*"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
