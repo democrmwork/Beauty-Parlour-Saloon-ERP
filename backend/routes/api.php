@@ -53,6 +53,14 @@ use App\Http\Controllers\Api\V1\StaffDesignationController;
 use App\Http\Controllers\Api\V1\UserController;
 use Illuminate\Support\Facades\Route;
 
+
+Route::get('/health', function () {
+    return response()->json([
+        'success' => true,
+        'message' => 'Salon ERP API is connected',
+    ]);
+});
+
 $viewManage = fn (string $resource) => [
     'index' => "permission:{$resource}.view",
     'show' => "permission:{$resource}.view",
