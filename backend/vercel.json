@@ -15,7 +15,10 @@
   "env": {
     "APP_ENV": "production",
     "APP_DEBUG": "true",
-    "APP_URL": "https://saloonerp.vercel.app",
+    "APP_URL": "https://saloonerp-api.vercel.app",
+
+    "CORS_ALLOWED_ORIGINS": "https://saloonerp.vercel.app,http://localhost:5173,http://127.0.0.1:5173",
+    "SANCTUM_STATEFUL_DOMAINS": "saloonerp.vercel.app,localhost:5173,127.0.0.1:5173",
 
     "APP_CONFIG_CACHE": "/tmp/config.php",
     "APP_EVENTS_CACHE": "/tmp/events.php",
