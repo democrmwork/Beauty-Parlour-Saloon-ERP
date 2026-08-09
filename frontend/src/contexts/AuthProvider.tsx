@@ -67,11 +67,18 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
     try {
       const response = await authService.login({ email, password })
-      setToken(response.data.token)
-      localStorage.setItem(TOKEN_KEY, response.data.token)
+      const newToken = response.data.token
+      const userData = response.data.user
 
-      const me = await authService.me()
-      persistUser(me.data)
+      setToken(newToken)
+      localStorage.setItem(TOKEN_KEY, newToken)
+
+      if (userData) {
+        persistUser(userData)
+      } else {
+        const me = await authService.me()
+        persistUser(me.data)
+      }
     } finally {
       setIsLoading(false)
     }
