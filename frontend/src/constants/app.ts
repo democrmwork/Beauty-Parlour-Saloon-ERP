@@ -6,7 +6,11 @@ function getApiBaseUrl(): string {
       url = url.replace('http:/', 'http://')
     }
     url = url.replace(/\/+$/, '')
-    if (!url.endsWith('/api/v1')) {
+    if (url.endsWith('/api/v1')) {
+      // Already correct
+    } else if (url.endsWith('/api')) {
+      url += '/v1'
+    } else {
       url += '/api/v1'
     }
     return url
